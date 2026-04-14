@@ -1,1 +1,1 @@
-def hello():\n print('hello git')
+def hello(user):
