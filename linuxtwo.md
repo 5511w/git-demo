@@ -503,3 +503,64 @@ vi 是 Linux 下标准的文本编辑程序，也是 Linux 命令行环境下最
 
 vi 与 vim 的关系：vim 是 vi 的增强版，完全兼容 vi 命令，新增了语法高亮、多窗口等功能，现代 Linux 系统默认 vi 通常是 vim 的软链接
 
+10. find
+
+在 Linux 系统里搜索文件 / 目录
+
+```
+find /路径 -name "文件名"   # 按文件名搜索
+find /root -type f   # 只找文件
+find /root -type d   # 只找目录
+# f = 普通文件  d = 目录   l = 软链接
+find /root -size +10M   # 大于10M
+find /root -size -5k    # 小于5k
+find /root -size 100M   # 等于100M
+find /root -perm 644   # 权限正好是644
+find /root -name "*.log" -exec rm -f {} \;
+```
+
+find = 搜索文件   -name = 按名字    -type = 按类型  -size = 按大小  -user = 按用户  -exec = 搜索后执行命令
+
+11. grep
+
+Linux 的文本搜索,专门用来在文件中匹配和过滤文本内容。
+
+```
+grep "error" app.log             # 搜索包含"error"的行
+grep -i "error" app.log          # 忽略大小写
+grep -v "debug" app.log          # 排除包含"debug"的行
+grep -n "warning" app.log        # 显示行号
+grep -c "error" app.log          # 统计匹配行数
+
+# 在 /var/log 目录下所有文件中，找包含 "mysql" 的内容
+grep -r "mysql" /var/log/
+
+grep -E "[0-9]+\.[0-9]+" data.txt  # 使用正则表达式,用 ^ 表示行首，$ 表示行尾，\ 用来转义 . * 等特殊字符
+```
+
+12. ssh - 安全远程登录
+
+```
+ssh user@hostname       # 基础连接
+ssh -p 2222 user@hostname  # 指定端口
+ssh -i ~/.ssh/id_rsa user@hostname  # 使用密钥认证
+ssh -L 8080:localhost:80 user@hostname  # 本地端口转发
+ssh -R 9090:localhost:3000 user@hostname # 远程端口转发
+```
+
+13. scp - 安全文件传输
+
+```
+# 复制本地文件到远程
+scp file.txt user@hostname:/remote/path/
+
+# 复制远程文件到本地
+scp user@hostname:/remote/file.txt ./
+
+# 递归复制目录
+scp -r directory/ user@hostname:/remote/path/
+
+# 保留文件属性
+scp -p file.txt user@hostname:/remote/path/
+```
+
