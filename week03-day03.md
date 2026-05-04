@@ -147,6 +147,15 @@ CREATE TABLE table_name (
 * column1, , ...是表中的列名。
 * datatype是每个列的数据类型。
 
+```
+-- 查看当前库所有表
+SHOW TABLES;
+-- 查看表结构
+DESC student;
+-- 删除表
+DROP TABLE student;
+```
+
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
 DEFAULT CURRENT_TIMESTAMP：当插入一条新记录且没有显式给 created_at 赋值时，数据库会自动将该字段设为当前的系统日期和时间。
@@ -175,3 +184,25 @@ CREATE TABLE MYTABLE (
 ```
 创建一个使用 utf8mb4 字符集和 utf8mb4_general_ci 排序规则的表。
 
+6. 删除数据表
+
+```
+DROP TABLE table_name;     -- 直接删除表，不检查是否存在
+DROP TABLE [IF EXISTS] table_name;  -- 会检查是否存在，如果存在则删除
+```
+
+* table_name 是要删除的表的名称。
+
+* IF EXISTS 是一个可选的子句，表示如果表存在才执行删除操作，避免因为表不存在而引发错误。
+
+如果你只是想删除表中的所有数据，但保留表的结构，可以使用 TRUNCATE TABLE 语句：
+
+```
+TRUNCATE TABLE table_name;  #这会清空表中的所有数据，但不会删除表本身。
+```
+
+###### 注意事项：
+
+备份数据：在删除表之前，确保已经备份了数据，如果你需要的话。
+
+外键约束：如果该表与其他表有外键约束，可能需要先删除外键约束，或者确保依赖关系被处理好。
