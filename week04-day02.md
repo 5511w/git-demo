@@ -41,3 +41,53 @@ FROM table_name
 WHERE EXISTS
 (SELECT column_name FROM table_name WHERE condition);
 ```
+
+NOT EXISTS
+
+
+用于检查子查询是否没有返回任何行的条件运算符。
+
+```sql
+SELECT columns
+FROM table1 t1
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM table2 t2
+    WHERE t2.key = t1.key
+        AND (其他条件)
+);
+```
+
+对 t1 中的每一行，执行子查询。
+
+如果子查询 返回至少一行，则 NOT EXISTS 为 FALSE，该行被排除。
+
+如果子查询 返回空集，则 NOT EXISTS 为 TRUE，该行被选中。
+
+SELECT 1 只是习惯写法，实际不关心选什么列，只关心有没有行返回。
+
+CASE
+
+不同条件下返回不同的数值。
+
+如果没有匹配条件（且没有其他条件），则返回NULL。
+
+```sql
+CASE WHEN condition1 THEN value1 
+       WHEN condition2 THEN value2  
+       ELSE def_value 
+  END 
+```
+
+例
+
+```sql
+SELECT name, population
+      ,CASE WHEN population<1000000 
+            THEN 'small'
+            WHEN population<10000000 
+            THEN 'medium'
+            ELSE 'large'
+       END
+  FROM bbc
+```
