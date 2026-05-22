@@ -2,7 +2,7 @@
 
 1. top 实时监控系统
 ---
-类似于 Windows 任务管理器，实时查看 CPU、内存、进程。![alt text](image.png)
+类似于 Windows 任务管理器，实时查看 CPU、内存、进程。![alt text](image/image.png)
 
 1. ps 查看进程瞬间状态
 显示系统进程在瞬间的运行动态 
@@ -15,11 +15,11 @@ ps -aux   # 显示详细资源占用
 
 ps -ef（常用）
 
-![alt text](image-1.png) 
+![alt text](image/image-1.png) 
 * uid表示进程所属用户，pid表示进程的编号，ppid表示他的父进程，cmd是进程的名称
 ps -aux
 
-![alt text](image-2.png)
+![alt text](image/image-2.png)
 
 2. df 查看磁盘空间
 ```
@@ -30,7 +30,7 @@ df -ih    # 查看 Inode 占用情况
 
 执行实例：
 
-![alt text](image-3.png)
+![alt text](image/image-3.png)
 
 |列名 | 含义 |
 |----|----|
@@ -82,7 +82,7 @@ cp -a 源文件 目标文件    # 保留属性完整复制
 * cp拷贝文件的时候，如果出现覆盖问题，默认是添加了“-i”选项(如root)
 * cp拷贝文件只能把一个文件复制成另一个文件，cp后面跟多个文件可以把这些文件复制到一个目录中，那么最后必须跟一个目录
 实例
-![alt text](image-4.png)
+![alt text](image/image-4.png)
 
 2. mv 移动 / 重命名
 
@@ -95,13 +95,13 @@ mv 旧文件名 新文件名     # 重命名
 mv 文件 目标目录         # 移动文件
 ```
 
-![alt text](image-5.png)
+![alt text](image/image-5.png)
 
 * 执行示例（重命名操作）
-![alt text](image-6.png)
+![alt text](image/image-6.png)
 
 * 执行示例（移动操作）
-![alt text](image-7.png)
+![alt text](image/image-7.png)
 
 * mv 源文件名 修改后的文件名 目标路径，可以实现移动并重命名
 
@@ -158,17 +158,17 @@ ln -s 源文件 目标文件    # 软链接（快捷方式）
 ```
 
 示例：
-![alt text](image-8.png)
+![alt text](image/image-8.png)
 
 ```
 ls -l test.txt hard_link.txt soft_link.txt
 ```
 
-![alt text](image-9.png)
+![alt text](image/image-9.png)
 
 修改源文件内容后，软硬链接都会改变，但删除源文件后不同
 
-![alt text](image-10.png)
+![alt text](image/image-10.png)
 
 5. su 切换用户
 
@@ -238,19 +238,19 @@ usermod [选项] 用户名    # 修改用户属性
 
 * 示例（useradd）
 
-![alt text](image-11.png)
+![alt text](image/image-11.png)
 
 密码需要特殊字符加大小写字母，长度超过12位，同时密码需要避免规律化
 
 * 示例（userdel）
 
-![alt text](image-12.png)
+![alt text](image/image-12.png)
 
 uid唯一标识用户，gid是表示主组，groups表示附加组
 
 * 示例（usermod）、
 
-![alt text](image-13.png)
+![alt text](image/image-13.png)
 
 * 补
 
@@ -334,19 +334,19 @@ newgrp 组名       # 切换当前组
 
 普通创建：
 
-![alt text](image-14.png)
+![alt text](image/image-14.png)
 
 指定 GID 创建组：
 
-![alt text](image-15.png)
+![alt text](image/image-15.png)
 
 普通删除组：
 
-![alt text](image-16.png)
+![alt text](image/image-16.png)
 
 示例（newgrp）：
 
-![alt text](image-18.png)
+![alt text](image/image-18.png)
 
 补：临时切换	newgrp 组名	仅当前会话有效，退出就恢复；需要组密码或用户属于该组
 
@@ -412,7 +412,7 @@ chmod 755 目录名
 chmod 755 脚本文件.sh
 ```
 
-![alt text](image-19.png)
+![alt text](image/image-19.png)
 
 2. 字符表示法
 
@@ -438,7 +438,7 @@ chmod o-rwx 文件名
 chmod g+r-w 文件名
 ```
 
-![alt text](image-20.png)
+![alt text](image/image-20.png)
 
 ### chown 修改属主 / 属组
 
@@ -452,13 +452,13 @@ chown -R :mysql /usr/local/mysql #只修改组
 
 -R表示递归式的进行权限修改，也就是将目录下的所有文件，子目录都更新成为指定的用户组权限
 
-![alt text](image-21.png)
+![alt text](image/image-21.png)
 
 不加-R与加了的区别
 
-![alt text](image-22.png)
+![alt text](image/image-22.png)
 
-![alt text](image-23.png)
+![alt text](image/image-23.png)
 
 .：当前目录  ..：上一级目录
 
@@ -497,9 +497,9 @@ vi 是 Linux 下标准的文本编辑程序，也是 Linux 命令行环境下最
 |o|在当前行的下方新开一行并进入输入模式|
 |O(大写)|在当前行的上方新开一行并进入输入模式|
 
-![alt text](image-24.png)
+![alt text](image/image-24.png)
 
-![alt text](image-25.png)
+![alt text](image/image-25.png)
 
 vi 与 vim 的关系：vim 是 vi 的增强版，完全兼容 vi 命令，新增了语法高亮、多窗口等功能，现代 Linux 系统默认 vi 通常是 vim 的软链接
 
