@@ -228,6 +228,6 @@ public static void play(Animal a){
 @AllArgsConstructor //生成全参构造器
 ```
 
-使用需打开功能
+使用需打开功能：
 
 setting，搜索annotat,勾选，应用后确认
