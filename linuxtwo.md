@@ -563,4 +563,3 @@ scp -r directory/ user@hostname:/remote/path/
 # 保留文件属性
 scp -p file.txt user@hostname:/remote/path/
 ```
-
