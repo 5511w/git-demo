@@ -15,7 +15,7 @@ D:\暑假项目\code>javac HelloWorld.java
 D:\暑假项目\code>java HelloWorld
 Hello World!
 ```
-* 注意保存文件 Ctrl+C ，文件名称必须和代码中的类名称一致
+* 注意保存文件 Ctrl+S ，文件名称必须和代码中的类名称一致
 * 建议代码文件命名全英文，首字母大写，满足驼峰模式，源代码文件后缀必须是.java
 
 JAVA跨平台
@@ -52,6 +52,7 @@ JAVA跨平台
 |Ctrl + D|复制当前行数据到下一行|
 |Ctrl + Y|删除所在行，建议用Ctrl + X|
 |Ctrl + ALT + L|格式化代码|
+|Shift + F6|批量修改变量名|
 |Ctrl + /，Ctrl + Shift + /|对代码进行注释|
 
 修改类名称：Refactor  Rename
