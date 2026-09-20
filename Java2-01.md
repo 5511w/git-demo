@@ -145,3 +145,74 @@ public static void main(String[] args) {
     }
 ```
 
+### 分组
+
+```javq
+String regex1 = "\\w+@[\\w&&[^_]]{2,6}(\\.[a-zA-Z]{2,3}){1,2}";
+
+        String regex2 = "[1-9]\\d{16}(\\d|X|x)";
+
+        String regex3 = "([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d";
+
+        String regex4 = "([01]\\d|2[0-3])(:[0-5]\\d){2}";
+
+        //每组是有组号，也就是序号
+        //规则1：从1开始，连续不间断
+        //规则2：以左括号为基准，最左边的是第一组，其次为第二组，以此类推
+```
+
+* 捕获分组
+
+```java
+//需求1：判断一个字符串的开始字符和结束字符是否一致？只考虑一个字符
+        //举例 a431a n2134n c1234c $dar#
+        //   \\组号：表示把第x组的内容再拿出来用一次
+        String regex1 = "(.).+\\1";
+        System.out.println("a431a".matches(regex1));
+        System.out.println("n2134n".matches(regex1));
+        System.out.println("c1234c".matches(regex1));
+        System.out.println("$dar#".matches(regex1));
+
+        //需求2：判断一个字符串的开始字符和结束字符是否一致？可以有多个字符
+        //举例: ab431ab n2134n c?@1234c?@ $@dar$!
+        String regex2 = "(.+).+\\1";
+        System.out.println("ab431ab".matches(regex2));
+        System.out.println("n2134n".matches(regex2));
+        System.out.println("c?@1234c?@".matches(regex2));
+        System.out.println("$@dar$!".matches(regex2));
+        
+        //需求3：判断一个字符串的开始字符和结束字符是否一致？开始部分内部每个字符也需要一致
+        //举例:aaa123aaa nnn13545nnn 111324111 &&sfd&&
+
+        // (.)：把首字母看作一行
+        //  \\2 把首字母拿出来再次使用
+        //  * :作用与\\2，表示后面重复的内容出现0次或多次
+        String regex3 = "((.)\\2*).+\\1";
+        System.out.println("aaa123aaa".matches(regex3));
+        System.out.println("nnn13545nnn".matches(regex3));
+        System.out.println("111324111".matches(regex3));
+        System.out.println("&&sfd&&".matches(regex3));
+```
+
+后续还要继续使用本组的数据
+
+正则内部使用：\\组号
+
+正则外部使用：$组号
+
+* 非捕获分组
+
+分组之后不需要再使用本组数据，仅仅是把数据括起来
+
+```Java
+//身份证号：420105199003048888
+
+        //这里\\1报错的原因：（?:）就是非捕获分组，此时是不占用组号的
+        //(?:) (?=) (?!)
+        //更多是使用第一个
+        String regex4 = "[1-9]\\d{16}(?:\\d|X|x)\\1";
+        String regex5 = "[1-9]\\d{16}(?\\d|X|x)\\1";
+
+        System.out.println("420105199003048888".matches(regex4));
+```
+
